@@ -25,6 +25,10 @@ public class BlogService {
         return blogRepository.findAll();
     }
 
+    public Article findById(long id) {
+        return blogRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("not found : " + id));
+    }
     // 블로그 글의 ID를 받은 뒤 JPA에서 제공하는 메서드 이용해 데이터 삭제
     public void delete(long id) {
         blogRepository.deleteById(id);
